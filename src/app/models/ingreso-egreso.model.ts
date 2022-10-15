@@ -4,5 +4,6 @@ export class IngresoEgreso {
     public monto: number,
     public tipo: string,
     public uid: string,
+    public ingresoId?: string,
   ) {}
 }

@@ -24,6 +24,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app'
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { appReducers } from './app.reducer';
+import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { appReducers } from './app.reducer';
     DetalleComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    OrdenIngresoPipe
   ],
   imports: [
     BrowserModule,
