@@ -25,10 +25,10 @@ export class AuthService {
     private _store: Store<AppState>
   ) { }
 
-  crearUsuario(nombre: string, email: string, password: string) {
+  crearUsuario(nombre: string, email: string, password: string, descripcion: string) {
     return createUserWithEmailAndPassword(this.auth, email, password)
       .then(({user}) => {
-        const newUser = new Usuario(user?.uid!, nombre, email);
+        const newUser = new Usuario(user?.uid!, nombre, email, descripcion);
         const db = getFirestore()
         return setDoc(doc(db, 'user', user.uid), {...newUser});
       })

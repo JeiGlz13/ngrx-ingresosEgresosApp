@@ -38,6 +38,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
         '',
         [Validators.required],
       ],
+      descripcion: [
+        '',
+        [Validators.required],
+      ],
     });
 
     this.uiSubscribe = this._store.select('ui')
@@ -51,9 +55,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
   crearUsuario(){
     if (this.registroForm.invalid) return;
     this._store.dispatch(isLoading());
-    const { nombre, correo, password } = this.registroForm.value;
+    const { nombre, correo, password, descripcion } = this.registroForm.value;
 
-    this._authService.crearUsuario(nombre, correo, password)
+    this._authService.crearUsuario(nombre, correo, password, descripcion)
       .then((credenciales) => {
         console.log(credenciales);
         this._store.dispatch(stopLoading())

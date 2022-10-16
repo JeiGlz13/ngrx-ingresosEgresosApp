@@ -25,6 +25,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { appReducers } from './app.reducer';
 import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { OrdenIngresoPipe } from './pipes/orden-ingreso.pipe';
       logOnly: environment.production,
       autoPause: true,
     }),
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

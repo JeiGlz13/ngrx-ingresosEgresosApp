@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { ChartData, ChartEvent, ChartType } from 'chart.js';
+
 import { AppState } from '../../app.reducer';
 import { Subscription } from 'rxjs';
 import { IngresoEgreso } from '../../models/ingreso-egreso.model';
@@ -17,6 +19,15 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
 
   ingresosSubscribe!: Subscription;
 
+  public doughnutChartLabels: string[] = [ 'Egresos', 'Ingresos' ];
+  public doughnutChartData: ChartData<'doughnut'> = {
+    labels: this.doughnutChartLabels,
+    datasets: [
+      { data: [] },
+    ]
+  };
+  public doughnutChartType: ChartType = 'doughnut';
+
   constructor(
     private _store: Store<AppState>,
   ) { }
@@ -33,6 +44,11 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
   }
 
   generarEstadistica(items: IngresoEgreso[]) {
+    this.totalIngresos = 0;
+    this.totalEgresos = 0;
+    this.ingresos = 0;
+    this.egresos = 0;
+
     items.forEach((item) => {
       if (item.tipo === 'ingreso') {
         this.ingresos += 1;
@@ -42,6 +58,13 @@ export class EstadisticaComponent implements OnInit, OnDestroy {
         this.totalEgresos += item.monto;
       }
     })
+
+    this.doughnutChartData = {
+      ...this.doughnutChartData,
+      datasets: [
+        { data: [this.totalEgresos, this.totalIngresos] }
+      ]
+    }
 
     // this.totalIngresos = items.reduce((acc, item) => {
     //   if (item.tipo === 'ingreso') {

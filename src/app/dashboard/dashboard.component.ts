@@ -7,7 +7,14 @@ import { IngresoEgresoService } from '../services/ingreso-egreso.service';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html'
+  templateUrl: './dashboard.component.html',
+  styles: [
+    `
+      .main-panel {
+        margin-left: 260px;
+      }
+    `
+  ]
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   public userSubscription!: Subscription;
