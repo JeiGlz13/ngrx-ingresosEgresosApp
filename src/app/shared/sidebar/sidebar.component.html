@@ -8,7 +8,7 @@
             <img src="assets/images/faces/face1.jpg" alt="profile image">
           </div>
 
-          <div class="text-wrapper">
+          <div class="text-wrapper" *ngIf="user">
             <p class="profile-name">
               {{user.nombre}}
             </p>

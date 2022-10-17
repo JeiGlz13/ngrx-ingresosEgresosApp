@@ -16,4 +16,8 @@ export const dashboardRoutes: Routes = [
     path: 'detalle',
     component: DetalleComponent,
   },
+  {
+    path: '**',
+    redirectTo: '',
+  }
 ]
